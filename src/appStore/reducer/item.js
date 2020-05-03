@@ -5,14 +5,14 @@ const F = "_FAIL";
 
 const initialState = {
   ld_createItem: false,
-  ld_itemList: false,
+  ld_itemsList: false,
   ld_selectedItem: false,
 
   er_createItem: null,
   er_itemList: null,
   er_selectedItem: null,
 
-  itemList: [],
+  itemsList: [],
   selectedItem: {},
 };
 
@@ -35,12 +35,12 @@ export default (state = initialState, action) => {
     case actionTypes.GET_ITEMS_LIST + L:
       return { ...state, ld_itemList: true, er_itemList: null };
     case actionTypes.GET_ITEMS_LIST:
-      const { itemList } = action.payload;
+      const { itemsList } = action.payload;
       return {
         ...state,
         ld_itemList: false,
         er_itemList: null,
-        itemList: [...itemList],
+        itemsList: [...itemsList],
       };
     case actionTypes.GET_ITEMS_LIST + F:
       return {

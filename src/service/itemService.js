@@ -3,7 +3,6 @@ import items from "../config/stub/items.json";
 const ItemService = {
   doCreateItem: (item) =>
     new Promise((resolve, reject) => {
-      console.log("itemService | doCreateItem : ", item);
       if (item) {
         resolve(item);
       } else {
@@ -13,7 +12,6 @@ const ItemService = {
 
   doGetItem: (id) =>
     new Promise((resolve, reject) => {
-      console.log("itemService | doGetItem : ", id);
       const item = items[id];
       if (item) {
         resolve(item);
@@ -24,8 +22,10 @@ const ItemService = {
 
   doGetItemsList: () =>
     new Promise((resolve, reject) => {
-      console.log("itemService | doGetItemsList ");
-      const itemsList = items;
+      let itemsList = [];
+      for (let [key, value] of Object.entries(items)) {
+        itemsList.push({ ...value, id: key });
+      }
       if (itemsList) {
         resolve(itemsList);
       } else {

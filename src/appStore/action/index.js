@@ -23,7 +23,7 @@ export const createItem = (item) => {
 export const getItemsList = () => {
   return async (dispatch, getState) => {
     dispatch({ type: actionTypes.GET_ITEMS_LIST + L });
-    ItemService.doGetItemsList
+    ItemService.doGetItemsList()
       .then((itemsList) => {
         dispatch({ type: actionTypes.GET_ITEMS_LIST, payload: { itemsList } });
       })
