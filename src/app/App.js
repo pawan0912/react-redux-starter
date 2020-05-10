@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import { Container } from "semantic-ui-react";
 import ItemsList from "../container/ItemsList";
 
 class App extends Component {
@@ -12,9 +13,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
+      <Container fluid>
         <ItemsList />
-      </div>
+      </Container>
     );
   }
 }

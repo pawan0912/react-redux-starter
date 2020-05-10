@@ -1,10 +1,19 @@
 import React from "react";
+import { Card, Label } from "semantic-ui-react";
 
 const Item = ({ data }) => {
   return (
-    <div className="item">
-      <h5>{data.id}</h5>
-    </div>
+    <Card centered>
+      <Card.Content header={data.title} />
+      <Card.Content description={data.description} />
+      <Card.Content extra>
+        {/* <Icon name="currency" /> */}
+        <Label tag as="a">
+          {data.currencyFormat}
+          {data.price}
+        </Label>
+      </Card.Content>
+    </Card>
   );
 };
 
