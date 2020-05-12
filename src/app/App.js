@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Container } from "semantic-ui-react";
-import ItemsList from "../container/ItemsList";
+import { ItemsList, NavHeader } from "../container";
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +13,8 @@ class App extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container fluid className="app">
+        <NavHeader />
         <ItemsList />
       </Container>
     );
