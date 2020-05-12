@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import ItemsList from "../container/ItemsList";
+import { Container } from "semantic-ui-react";
+import { ItemsList, NavHeader } from "../container";
 
 class App extends Component {
   constructor(props) {
@@ -12,9 +13,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
+      <Container fluid className="app">
+        <NavHeader />
         <ItemsList />
-      </div>
+      </Container>
     );
   }
 }

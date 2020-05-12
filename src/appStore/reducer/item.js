@@ -9,7 +9,7 @@ const initialState = {
   ld_selectedItem: false,
 
   er_createItem: null,
-  er_itemList: null,
+  er_itemsList: null,
   er_selectedItem: null,
 
   itemsList: [],
@@ -33,20 +33,20 @@ export default (state = initialState, action) => {
         er_createItem: action.error,
       };
     case actionTypes.GET_ITEMS_LIST + L:
-      return { ...state, ld_itemList: true, er_itemList: null };
+      return { ...state, ld_itemsList: true, er_itemsList: null };
     case actionTypes.GET_ITEMS_LIST:
       const { itemsList } = action.payload;
       return {
         ...state,
-        ld_itemList: false,
-        er_itemList: null,
+        ld_itemsList: false,
+        er_itemsList: null,
         itemsList: [...itemsList],
       };
     case actionTypes.GET_ITEMS_LIST + F:
       return {
         ...state,
-        ld_itemList: false,
-        er_itemList: action.error,
+        ld_itemsList: false,
+        er_itemsList: action.error,
       };
     case actionTypes.SET_SELECTED_ITEM + L:
       return { ...state, ld_selectedItem: true, er_selectedItem: null };

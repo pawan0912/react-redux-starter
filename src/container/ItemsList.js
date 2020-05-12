@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Container } from "semantic-ui-react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getItemsList } from "../appStore/action";
@@ -18,11 +19,11 @@ class ItemsList extends Component {
   render() {
     const { itemsList } = this.props;
     return (
-      <div className="items-list">
+      <Container>
         {itemsList.map((itemData, index) => (
           <Item key={index} data={itemData} />
         ))}
-      </div>
+      </Container>
     );
   }
 }
