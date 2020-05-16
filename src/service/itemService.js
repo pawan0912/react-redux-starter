@@ -1,4 +1,5 @@
-import items from "../config/stub/items.json";
+import itemsJson from "../config/stub/items.json";
+import { get } from "lodash";
 
 const ItemService = {
   doCreateItem: (item) =>
@@ -12,7 +13,7 @@ const ItemService = {
 
   doGetItem: (id) =>
     new Promise((resolve, reject) => {
-      const item = items[id];
+      const item = itemsJson[id];
       if (item) {
         resolve(item);
       } else {
@@ -22,10 +23,7 @@ const ItemService = {
 
   doGetItemsList: () =>
     new Promise((resolve, reject) => {
-      let itemsList = [];
-      for (let [key, value] of Object.entries(items)) {
-        itemsList.push({ ...value, id: key });
-      }
+      const itemsList = get(itemsJson, "items", []);
       if (itemsList) {
         resolve(itemsList);
       } else {
