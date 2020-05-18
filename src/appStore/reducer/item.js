@@ -7,13 +7,21 @@ const initialState = {
   ld_createItem: false,
   ld_itemsList: false,
   ld_selectedItem: false,
+  ld_updateItem: false,
+  ld_deleteItem: false,
 
   er_createItem: null,
   er_itemsList: null,
   er_selectedItem: null,
+  er_updateItem: null,
+  er_deleteItem: null,
 
   itemsList: [],
   selectedItem: {},
+  showAddModal: false,
+  editMode: false,
+  selectedFilter: "",
+  budget: 0,
 };
 
 export default (state = initialState, action) => {
@@ -64,7 +72,54 @@ export default (state = initialState, action) => {
         ld_selectedItem: false,
         er_selectedItem: action.error,
       };
+    case actionTypes.SET_ADD_MODAL:
+      const { showAddModal, editMode } = action.payload;
+      return {
+        ...state,
+        showAddModal: showAddModal,
+        editMode: editMode,
+      };
+    case actionTypes.UPDATE_ITEM + L:
+      return { ...state, ld_updateItem: true, er_updateItem: null };
+    case actionTypes.UPDATE_ITEM:
+      return {
+        ...state,
+        ld_updateItem: false,
+        er_updateItem: null,
+      };
+    case actionTypes.UPDATE_ITEM + F:
+      return {
+        ...state,
+        ld_updateItem: false,
+        er_updateItem: action.error,
+      };
+    case actionTypes.DELETE_ITEM + L:
+      return { ...state, ld_deleteItem: true, er_deleteItem: null };
+    case actionTypes.DELETE_ITEM:
+      return {
+        ...state,
+        ld_deleteItem: false,
+        er_deleteItem: null,
+      };
+    case actionTypes.DELETE_ITEM + F:
+      return {
+        ...state,
+        ld_deleteItem: false,
+        er_deleteItem: action.error,
+      };
 
+    case actionTypes.SET_SELECTED_FILTER:
+      const { selectedFilter } = action.payload;
+      return {
+        ...state,
+        selectedFilter: selectedFilter,
+      };
+    case actionTypes.SET_BUDGET:
+      const { budget } = action.payload;
+      return {
+        ...state,
+        budget: budget,
+      };
     default:
       return state;
   }

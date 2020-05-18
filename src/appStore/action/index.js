@@ -8,11 +8,12 @@ export const createItem = (item) => {
   return async (dispatch, getState) => {
     dispatch({ type: actionTypes.CREATE_ITEM + L });
     ItemService.doCreateItem(item)
-      .then(() => {
+      .then((createdItem) => {
         dispatch({
           type: actionTypes.CREATE_ITEM,
-          payload: {},
+          payload: { createdItem },
         });
+        dispatch(getItemsList());
       })
       .catch((e) => {
         dispatch({ type: actionTypes.CREATE_ITEM + F, error: e });
@@ -36,4 +37,53 @@ export const getItemsList = () => {
 export const selectItem = (selectedItem) => ({
   type: actionTypes.SET_SELECTED_ITEM,
   payload: { selectedItem },
+});
+
+export const toggleAddModal = (showAddModal = false, editMode = false) => ({
+  type: actionTypes.SET_ADD_MODAL,
+  payload: { showAddModal, editMode },
+});
+
+export const updateItem = (item) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: actionTypes.UPDATE_ITEM + L });
+    ItemService.doUpdateItem(item)
+      .then((updatedItem) => {
+        dispatch({
+          type: actionTypes.UPDATE_ITEM,
+          payload: { updatedItem },
+        });
+        dispatch(getItemsList());
+      })
+      .catch((e) => {
+        dispatch({ type: actionTypes.UPDATE_ITEM + F, error: e });
+      });
+  };
+};
+
+export const deleteItem = ({ id }) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: actionTypes.DELETE_ITEM + L });
+    ItemService.doDeleteItem(id)
+      .then((deletedItem) => {
+        dispatch({
+          type: actionTypes.DELETE_ITEM,
+          payload: { deletedItem },
+        });
+        dispatch(getItemsList());
+      })
+      .catch((e) => {
+        dispatch({ type: actionTypes.DELETE_ITEM + F, error: e });
+      });
+  };
+};
+
+export const selectFilter = (selectedFilter = "") => ({
+  type: actionTypes.SET_SELECTED_FILTER,
+  payload: { selectedFilter },
+});
+
+export const setBudget = (budget) => ({
+  type: actionTypes.SET_BUDGET,
+  payload: { budget },
 });

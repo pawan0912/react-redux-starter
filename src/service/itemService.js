@@ -2,7 +2,7 @@ import axios from "axios";
 import {} from "lodash";
 // import itemsJson from "../config/stub/items.json";
 
-const API_URL = "http://localhost:3001/items/";
+const API_URL = "http://localhost:3001/bills/";
 
 const ItemService = {
   // Create an item
