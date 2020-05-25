@@ -1,12 +1,21 @@
 import React from "react";
 import { Card, Label, Grid } from "semantic-ui-react";
 
+const CATEGORIES = {
+  food_and_dining: "Food & Dining",
+  utility: "Utility",
+  shopping: "Shopping",
+  education: "Education",
+  personal_care: "Personal Care",
+  travel: "Travel",
+};
+
 const Item = ({ data }) => {
   return (
     <Card centered>
       <Card.Content>
         <Card.Header>{data.description}</Card.Header>
-        <Label attached="top right">{data.category}</Label>
+        <Label attached="top right">{CATEGORIES[data.category]}</Label>
       </Card.Content>
       <Card.Content extra>
         <Grid centered columns={2}>

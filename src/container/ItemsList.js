@@ -26,14 +26,12 @@ class ItemsList extends Component {
   };
 
   render() {
-    const { filteredItemsList = [], budgetList = [] } = this.props;
+    const { filteredItemsList = [] } = this.props;
     return (
       <Container>
         {filteredItemsList.map((itemData, index) => (
           <Grid key={index} columns="2">
-            <Grid.Column
-              color={budgetList[parseInt(itemData.id)] ? "green" : null}
-            >
+            <Grid.Column>
               <Item data={itemData} />
             </Grid.Column>
             <Grid.Column verticalAlign="middle">
@@ -69,27 +67,10 @@ const filterItems = (itemsList = [], selectedFilter = "") =>
     ? itemsList
     : itemsList.filter((item) => item.category === selectedFilter);
 
-const getBudget = (itemsList = [], budget = 0) => {
-  let budgetList = [];
-  let totalBudget = budget;
-  itemsList
-    .sort((a, b) => parseInt(b.amount) - parseInt(a.amount))
-    .forEach(({ id, amount }) => {
-      if (totalBudget >= parseInt(amount)) {
-        budgetList[parseInt(id)] = true;
-        totalBudget = totalBudget - parseInt(amount);
-      } else {
-        budgetList[parseInt(id)] = false;
-      }
-    });
-  return budgetList;
-};
 const mapStateToProps = ({ item }) => ({
   itemsList: item.itemsList,
   selectedFilter: item.selectedFilter,
   filteredItemsList: filterItems(item.itemsList, item.selectedFilter),
-  budget: item.budget,
-  budgetList: getBudget(item.itemsList, item.budget),
 });
 
 const mapDispatchToProps = (dispatch) =>
