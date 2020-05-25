@@ -93,7 +93,7 @@ class AddModal extends Component {
     const { description, amount, date, category } = this.state;
     return (
       <Modal open={showAddModal} onClose={this.handleOnClose}>
-        <Modal.Header>Add an expense</Modal.Header>
+        <Modal.Header>Add an item</Modal.Header>
         <Modal.Content>
           <Form onSubmit={this.handleOnSubmit}>
             <Form.Input

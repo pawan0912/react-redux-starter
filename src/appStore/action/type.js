@@ -6,6 +6,5 @@ const actionTypes = {
   UPDATE_ITEM: "UPDATE_ITEM",
   DELETE_ITEM: "DELETE_ITEM",
   SET_SELECTED_FILTER: "SET_SELECTED_FILTER",
-  SET_BUDGET: "SET_BUDGET",
 };
 export default actionTypes;

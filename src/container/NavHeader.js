@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import { Menu, Dropdown, Button, Icon, Input } from "semantic-ui-react";
+import { Menu, Dropdown, Button, Icon } from "semantic-ui-react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { toggleAddModal, selectFilter, setBudget } from "../appStore/action";
+import { toggleAddModal, selectFilter } from "../appStore/action";
 
 class NavHeader extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      budget: "",
-    };
+    this.state = {};
     this.categories = [
       { key: 1, text: "Food & Dining", value: "food_and_dining" },
       { key: 2, text: "Utility", value: "utility" },
@@ -30,23 +28,7 @@ class NavHeader extends Component {
     selectFilter(value);
   };
 
-  handleBudgetChange = (e, { value }) => {
-    this.setState({ budget: parseInt(value) || "" });
-  };
-  handleBudgetReset = () => {
-    const { setBudget } = this.props;
-    this.setState({ budget: "" });
-    setBudget(0);
-  };
-
-  handleCalculate = () => {
-    const { budget } = this.state;
-    const { setBudget } = this.props;
-    setBudget(parseInt(budget));
-  };
-
   render() {
-    const { budget } = this.state;
     return (
       <Menu>
         <Menu.Item>
@@ -57,24 +39,6 @@ class NavHeader extends Component {
             placeholder="Filter"
             options={this.categories}
             onChange={this.handleDropdownChange}
-          />
-        </Menu.Item>
-        <Menu.Item>
-          <Icon
-            name="erase"
-            onClick={this.handleBudgetReset}
-            disabled={!budget}
-          />
-          <Input
-            action={{
-              type: "submit",
-              content: "Calculate",
-              onClick: this.handleCalculate,
-            }}
-            type="number"
-            placeholder="Enter your monthly budget"
-            onChange={this.handleBudgetChange}
-            value={budget}
           />
         </Menu.Item>
         <Menu.Item position="right">
@@ -88,6 +52,6 @@ class NavHeader extends Component {
 const mapStateToProps = ({ item }) => ({});
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ toggleAddModal, selectFilter, setBudget }, dispatch);
+  bindActionCreators({ toggleAddModal, selectFilter }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavHeader);

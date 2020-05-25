@@ -82,8 +82,3 @@ export const selectFilter = (selectedFilter = "") => ({
   type: actionTypes.SET_SELECTED_FILTER,
   payload: { selectedFilter },
 });
-
-export const setBudget = (budget) => ({
-  type: actionTypes.SET_BUDGET,
-  payload: { budget },
-});

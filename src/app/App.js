@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getItemsList } from "../appStore/action";
 import { Container, Grid } from "semantic-ui-react";
-import { ItemsList, NavHeader, AddModal, GraphView } from "../container";
+import { ItemsList, NavHeader, AddModal } from "../container";
 
 class App extends Component {
   constructor(props) {
@@ -21,12 +21,9 @@ class App extends Component {
     return (
       <Container fluid>
         <NavHeader />
-        <Grid as={Container} columns="2">
+        <Grid as={Container} columns="1">
           <Grid.Column>
             <ItemsList />
-          </Grid.Column>
-          <Grid.Column verticalAlign="top">
-            <GraphView />
           </Grid.Column>
         </Grid>
         <AddModal />

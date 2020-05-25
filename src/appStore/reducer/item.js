@@ -21,7 +21,6 @@ const initialState = {
   showAddModal: false,
   editMode: false,
   selectedFilter: "",
-  budget: 0,
 };
 
 export default (state = initialState, action) => {
@@ -113,12 +112,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         selectedFilter: selectedFilter,
-      };
-    case actionTypes.SET_BUDGET:
-      const { budget } = action.payload;
-      return {
-        ...state,
-        budget: budget,
       };
     default:
       return state;
