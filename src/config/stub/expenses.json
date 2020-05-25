@@ -1,0 +1,60 @@
+{
+  "bills": [
+    {
+      "id": 1,
+      "description": "Dominoes",
+      "category": "food_and_dining",
+      "amount": "430",
+      "date": "2020-01-02"
+    },
+    {
+      "id": 2,
+      "description": "Car wash",
+      "category": "utility",
+      "amount": "500",
+      "date": "2020-01-06"
+    },
+    {
+      "id": 3,
+      "description": "Amazon",
+      "category": "shopping",
+      "amount": "2030",
+      "date": "2020-01-07"
+    },
+    {
+      "id": 4,
+      "description": "House rent",
+      "category": "food_and_dining",
+      "amount": "35900",
+      "date": "2020-01-03"
+    },
+    {
+      "id": 5,
+      "description": "Tuition",
+      "category": "education",
+      "amount": "2200",
+      "date": "2020-01-12"
+    },
+    {
+      "id": 6,
+      "description": "Laundry",
+      "category": "personal_care",
+      "amount": "320",
+      "date": "2020-01-14"
+    },
+    {
+      "id": 7,
+      "description": "Vacation",
+      "category": "travel",
+      "amount": "3430",
+      "date": "2020-01-18"
+    },
+    {
+      "description": "Lunch",
+      "amount": "150",
+      "date": "2020-05-17",
+      "category": "food_and_dining",
+      "id": 8
+    }
+  ]
+}
