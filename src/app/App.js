@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Container } from "semantic-ui-react";
-import { ItemsList, NavHeader } from "../container";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { getItemsList } from "../appStore/action";
+import { Container, Grid } from "semantic-ui-react";
+import { ItemsList, NavHeader, AddModal } from "../container";
 
 class App extends Component {
   constructor(props) {
@@ -9,16 +12,28 @@ class App extends Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { getItemsList } = this.props;
+    getItemsList();
+  }
 
   render() {
     return (
-      <Container fluid className="app">
+      <Container fluid>
         <NavHeader />
-        <ItemsList />
+        <Grid as={Container} columns="1">
+          <Grid.Column>
+            <ItemsList />
+          </Grid.Column>
+        </Grid>
+        <AddModal />
       </Container>
     );
   }
 }
 
-export default App;
+const mapStateToProps = ({ item }) => ({});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ getItemsList }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
